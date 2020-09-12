@@ -1,0 +1,14 @@
+import requests
+from bs4 import BeautifulSoup
+#reads
+res = requests.get('https://oldschool.runescape.wiki/w/Dragon_warhammer')
+#Unpacks
+sauce = BeautifulSoup(res.text, 'lxml')
+stats = sauce.find("div",{"id": "mw-content-text", })
+stats.find_all({"class": 'plainlinks.rsw-infobox.infobox.infobox-bonuses'})
+print(stats)
+#<table class="plainlinks rsw-infobox infobox infobox-switch infobox-bonuses infobox" data-resource-class=".infobox-resources-Infobox_Bonuses"><caption class="rsw-infobox-switch-buttons-caption">
+#div id="mw-content-text"
+
+#made it to the div where the information is located not sure how to filter out everything but the stats now 
+
