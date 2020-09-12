@@ -1,0 +1,47 @@
+import requests
+from bs4 import BeautifulSoup
+#reads
+res = requests.get('https://oldschool.runescape.wiki/w/Brine_sabre')
+#Unpacks
+sauce = BeautifulSoup(res.text, 'lxml')
+print(sauce.select('.infobox-nested')[29])
+
+#testing a for loop to get data into an array 
+x = [5,6,7,8,9,15,16,17,18,19,25,26,27,28]
+stats = []
+for i in range(0,13):
+    getstats = sauce.select('.infobox-nested')[x[i]]
+    stats.insert(i,getstats)
+    print(stats[i])
+
+
+#<table class="plainlinks rsw-infobox infobox infobox-switch infobox-bonuses infobox" data-resource-class=".infobox-resources-Infobox_Bonuses"><caption class="rsw-infobox-switch-buttons-caption">
+#div id="mw-content-text"
+
+#made it to the div where the information is located not sure how to filter out everything but the stats now 
+
+#class="mw-parser-output"
+
+#need info box numbers 
+# 
+# Offensive:
+# 5 stab 
+# 6 slash 
+# 7 crush
+# 8 Magic
+# 9 Ranged
+#
+#
+#
+# Defensive: ??
+# stab 15
+# slash 16
+# crush 17
+# magic 18
+# ranged 19
+# 
+# Other Bonus:
+#str 25
+#ranged str26
+# magic 27
+# prayer 28
